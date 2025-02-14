@@ -69,7 +69,7 @@ function App() {
 
     return (
         <div className="flex min-h-screen flex-col text-gray-900 animate-bgChange">
-            <div className="flex justify-between m-4 text-gray-900">
+            <nav className="flex justify-between m-4 text-gray-900">
                 <div>
                     <img src='/fusion-logo.png' alt="fusion logo" className="h-16 w-16" />
                 </div>
@@ -84,7 +84,6 @@ function App() {
                         Contact Us
                     </li>
                 </ul>
-
                 <div>
                     <NavigationMenu>
                         <NavigationMenuList>
@@ -102,7 +101,7 @@ function App() {
                     </NavigationMenu>
 
                 </div>
-            </div>
+            </nav>
 
             <main className="flex flex-grow flex-col items-center justify-center px-6 text-center">
                 {/* Text Reveal Animation */}
