@@ -19,11 +19,15 @@ import {
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { motion } from "framer-motion";
+// import { useLocation } from "react-router-dom";
+
 
 function App() {
     const [isRecording, setIsRecording] = useState(false);
     const [groundingFiles, setGroundingFiles] = useState<GroundingFile[]>([]);
     const [selectedFile, setSelectedFile] = useState<GroundingFile | null>(null);
+    // const location = useLocation();
+    const [active, setActive] = useState("Home");
 
     const { startSession, addUserAudio, inputAudioBufferClear, sendJsonMessage } = useRealTime({
         onWebSocketOpen: () => console.log("WebSocket connection opened"),
@@ -69,6 +73,18 @@ function App() {
                 <div>
                     <img src='/fusion-logo.png' alt="fusion logo" className="h-16 w-16" />
                 </div>
+                <ul className="flex flex-row space-x-6 text-lg font-semibold mt-2">
+                    <li onClick={() => setActive("Home")} className={`${active === "Home" ? "text-blue-600" : "text-violet-500"}`}>
+                        Home
+                    </li>
+                    <li onClick={() => setActive("About")} className={`${active === "About" ? "text-blue-600" : "text-violet-500"}`}>
+                        About
+                    </li>
+                    <li onClick={() => setActive("Contact")} className={`${active === "Contact" ? "text-blue-600" : "text-violet-500"}`}>
+                        Contact Us
+                    </li>
+                </ul>
+
                 <div>
                     <NavigationMenu>
                         <NavigationMenuList>
@@ -129,7 +145,7 @@ function App() {
             </main>
 
             <footer className="py-6 text-center">
-                <p className="text-gray-600 text-md md:text-lg font-medium tracking-wide">
+                <p className="text-gray-600 text-sm md:text-md font-medium tracking-wide">
                     {t("app.footer")}
                 </p>
             </footer>
